@@ -13,6 +13,16 @@
 		30724AAC2C81A30000B329CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 30724AAB2C81A30000B329CE /* Base */; };
 		30724AAE2C81A30200B329CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30724AAD2C81A30200B329CE /* Assets.xcassets */; };
 		30724AB12C81A30200B329CE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 30724AB02C81A30200B329CE /* Base */; };
+		30724ABB2C81A58E00B329CE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724ABA2C81A58E00B329CE /* LoadingView.swift */; };
+		30724ABE2C81A95E00B329CE /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724ABD2C81A95E00B329CE /* CustomProgressBar.swift */; };
+		30724AC12C831D2F00B329CE /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AC02C831D2F00B329CE /* StatisticsView.swift */; };
+		30724AC32C83203E00B329CE /* StatisticCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AC22C83203E00B329CE /* StatisticCellView.swift */; };
+		30724AC52C833FA000B329CE /* CustonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AC42C833FA000B329CE /* CustonButtonView.swift */; };
+		30724AC82C83422B00B329CE /* StudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AC72C83422B00B329CE /* StudentsView.swift */; };
+		30724ACB2C83477800B329CE /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724ACA2C83477800B329CE /* StudentViewModel.swift */; };
+		30724ACF2C8347BC00B329CE /* CoachMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30724ACD2C8347BC00B329CE /* CoachMate.xcdatamodeld */; };
+		30724AD12C83488C00B329CE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AD02C83488C00B329CE /* CoreDataManager.swift */; };
+		30724AD42C83A13900B329CE /* StudentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724AD32C83A13900B329CE /* StudentCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +34,16 @@
 		30724AAD2C81A30200B329CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30724AB02C81A30200B329CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30724AB22C81A30200B329CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30724ABA2C81A58E00B329CE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		30724ABD2C81A95E00B329CE /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
+		30724AC02C831D2F00B329CE /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		30724AC22C83203E00B329CE /* StatisticCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellView.swift; sourceTree = "<group>"; };
+		30724AC42C833FA000B329CE /* CustonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonButtonView.swift; sourceTree = "<group>"; };
+		30724AC72C83422B00B329CE /* StudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsView.swift; sourceTree = "<group>"; };
+		30724ACA2C83477800B329CE /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
+		30724ACE2C8347BC00B329CE /* CoachMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoachMate.xcdatamodel; sourceTree = "<group>"; };
+		30724AD02C83488C00B329CE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		30724AD32C83A13900B329CE /* StudentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +76,11 @@
 		30724AA32C81A30000B329CE /* CoachMate */ = {
 			isa = PBXGroup;
 			children = (
+				30724AD22C83A12700B329CE /* Cells */,
+				30724ACC2C83479A00B329CE /* CoreData */,
+				30724AC92C83475F00B329CE /* ViewModels */,
+				30724ABC2C81A93C00B329CE /* Helpers */,
+				30724AB82C81A55E00B329CE /* View */,
 				30724AA42C81A30000B329CE /* AppDelegate.swift */,
 				30724AA62C81A30000B329CE /* SceneDelegate.swift */,
 				30724AA82C81A30000B329CE /* ViewController.swift */,
@@ -65,6 +90,75 @@
 				30724AB22C81A30200B329CE /* Info.plist */,
 			);
 			path = CoachMate;
+			sourceTree = "<group>";
+		};
+		30724AB82C81A55E00B329CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				30724AC62C83421200B329CE /* Students */,
+				30724ABF2C831D0000B329CE /* Statistics */,
+				30724AB92C81A57600B329CE /* Loading */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		30724AB92C81A57600B329CE /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				30724ABA2C81A58E00B329CE /* LoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		30724ABC2C81A93C00B329CE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				30724ABD2C81A95E00B329CE /* CustomProgressBar.swift */,
+				30724AC22C83203E00B329CE /* StatisticCellView.swift */,
+				30724AC42C833FA000B329CE /* CustonButtonView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		30724ABF2C831D0000B329CE /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				30724AC02C831D2F00B329CE /* StatisticsView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		30724AC62C83421200B329CE /* Students */ = {
+			isa = PBXGroup;
+			children = (
+				30724AC72C83422B00B329CE /* StudentsView.swift */,
+			);
+			path = Students;
+			sourceTree = "<group>";
+		};
+		30724AC92C83475F00B329CE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				30724ACA2C83477800B329CE /* StudentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		30724ACC2C83479A00B329CE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				30724ACD2C8347BC00B329CE /* CoachMate.xcdatamodeld */,
+				30724AD02C83488C00B329CE /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		30724AD22C83A12700B329CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				30724AD32C83A13900B329CE /* StudentCellView.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +232,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30724AC32C83203E00B329CE /* StatisticCellView.swift in Sources */,
 				30724AA92C81A30000B329CE /* ViewController.swift in Sources */,
+				30724ACB2C83477800B329CE /* StudentViewModel.swift in Sources */,
+				30724AC12C831D2F00B329CE /* StatisticsView.swift in Sources */,
+				30724ABB2C81A58E00B329CE /* LoadingView.swift in Sources */,
+				30724AC52C833FA000B329CE /* CustonButtonView.swift in Sources */,
+				30724AD12C83488C00B329CE /* CoreDataManager.swift in Sources */,
+				30724AC82C83422B00B329CE /* StudentsView.swift in Sources */,
+				30724AD42C83A13900B329CE /* StudentCellView.swift in Sources */,
+				30724ACF2C8347BC00B329CE /* CoachMate.xcdatamodeld in Sources */,
 				30724AA52C81A30000B329CE /* AppDelegate.swift in Sources */,
+				30724ABE2C81A95E00B329CE /* CustomProgressBar.swift in Sources */,
 				30724AA72C81A30000B329CE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,8 +401,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,9 +411,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = home.CoachMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -324,8 +433,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,9 +443,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = home.CoachMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -361,6 +475,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		30724ACD2C8347BC00B329CE /* CoachMate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				30724ACE2C8347BC00B329CE /* CoachMate.xcdatamodel */,
+			);
+			currentVersion = 30724ACE2C8347BC00B329CE /* CoachMate.xcdatamodel */;
+			name = CoachMate.xcdatamodeld;
+			path = /Users/roman/Downloads/XcodeProgramm/CoachMate/CoachMate/CoreData/CoachMate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 30724A992C81A30000B329CE /* Project object */;
 }
