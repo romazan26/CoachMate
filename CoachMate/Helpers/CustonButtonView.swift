@@ -11,6 +11,7 @@ struct CustonButtonView: View {
     
     var text = ""
     var isSheetButton = false
+    var height: CGFloat = 84
     
     var body: some View {
         ZStack {
@@ -29,7 +30,7 @@ struct CustonButtonView: View {
                     }
                 }.padding()
             
-        }.frame(height: 84)
+        }.frame(height: height)
     }
 }
 

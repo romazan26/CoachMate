@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     @State private var progress: Float = 0.0
-    private var isPresent = false
+    @State private var isPresent = false
     var body: some View {
         ZStack {
             Color.main.ignoresSafeArea()
@@ -30,12 +30,18 @@ struct LoadingView: View {
                 Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
                     if progress < 10{
                         progress += 0.1
-                    }else {timer.invalidate()}
+                    }else {
+                        timer.invalidate()
+                        isPresent.toggle()
+                    }
                 }
             })
             .padding()
             
         }
+        .fullScreenCover(isPresented: $isPresent, content: {
+            StatisticsView()
+        })
     }
 }
 

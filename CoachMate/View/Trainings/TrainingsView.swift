@@ -1,14 +1,14 @@
 //
-//  StudentsView.swift
+//  TrainingsView.swift
 //  CoachMate
 //
-//  Created by Роман on 31.08.2024.
+//  Created by Роман on 07.09.2024.
 //
 
 import SwiftUI
 
-struct StudentsView: View {
-    @StateObject var vm: StudentViewModel
+struct TrainingsView: View {
+    @StateObject var vm: TrainingViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
@@ -27,16 +27,16 @@ struct StudentsView: View {
                     Spacer()
                     
                     /// Title view
-                    Text("Students")
+                    Text("Trainings")
                         .foregroundStyle(.white)
                         .font(.system(size: 32, weight: .heavy))
                         .padding(.leading, 25)
                     
                     Spacer()
                     
-                    /// Plus student button
+                    /// Plus Training button
                     Button {
-                        vm.isPresentAddStudents.toggle()
+                        vm.isPresentAddTraining.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
@@ -49,25 +49,25 @@ struct StudentsView: View {
                 
                 //MARK: - Main stack
                 VStack{
-                    ScrollView {
-                        ForEach(vm.students.indices) { i in
-                            StudentCellView(student: vm.students[i], vm: vm, index: i)
+                    if vm.trainings.isEmpty{
+                        Text("There is no training. Add the first workout")
+                            .foregroundStyle(.white)
+                            .padding(.top, 50)
+                    }else{
+                        ScrollView {
+                            ForEach(vm.trainings.indices) { i in
+                                // StudentCellView(student: vm.students[i], vm: vm, index: i)
+                            }
                         }
                     }
                 }
                 Spacer()
             }
             .padding()
-            
-            //MARK: - Add student
-            if vm.isPresentAddStudents{
-                AddStudentView(vm: vm)
-            }
         }
-        .animation(.easeInOut, value: vm.isPresentAddStudents)
     }
 }
 
 #Preview {
-    StudentsView(vm: StudentViewModel())
+    TrainingsView(vm: TrainingViewModel())
 }

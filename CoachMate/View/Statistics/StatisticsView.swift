@@ -10,6 +10,7 @@ import SwiftUI
 struct StatisticsView: View {
     
     @StateObject var studentVM = StudentViewModel()
+    @StateObject var trainingVM = TrainingViewModel()
     
     var body: some View {
             ZStack {
@@ -37,24 +38,24 @@ struct StatisticsView: View {
                             ///Total student
                             Button(action: {studentVM.isPresentStudents.toggle()}, label: {
                                 StatisticCellView(title: "Total students:",
-                                                  count: 24,
+                                                  count: studentVM.students.count,
                                                   widht: 161,
                                                   sheetIcon: true)
                             })
                            
                             ///Payd
                             StatisticCellView(title: "Payd:",
-                                              count: 16,
+                                              count: studentVM.getPaid(),
                                               widht: 161)
                         }
                         HStack{
                             ///Didn’t pay
                             StatisticCellView(title: "Didn’t pay",
-                                              count: 19,
+                                              count: studentVM.getDontPay(),
                                               widht: 120)
                             ///Payd
-                            StatisticCellView(title: "July salary:",
-                                              count: 20000,
+                            StatisticCellView(title: "\(studentVM.Dateformatter(date: Date())) salary:",
+                                              count: Int(studentVM.getSalaryMouth()),
                                               widht: 202)
                         }
                         
@@ -64,8 +65,17 @@ struct StatisticsView: View {
                     
                     Spacer()
                     
-                    CustonButtonView(text: "Trainings", isSheetButton: true)
+                    Button {
+                        trainingVM.isPresentTrainings.toggle()
+                    } label: {
+                        CustonButtonView(text: "Trainings", isSheetButton: true)
+                    }
+
+                    
                 }
+                .fullScreenCover(isPresented: $trainingVM.isPresentTrainings, content: {
+                    TrainingsView(vm: trainingVM)
+                })
                 .fullScreenCover(isPresented: $studentVM.isPresentStudents, content: {
                     StudentsView(vm: studentVM)
                 })

@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct StudentCellView: View {
+    
     @ObservedObject var student: Student
     @ObservedObject var vm: StudentViewModel
+    var index = 0
+    
     var body: some View {
         ZStack {
             Color.second.cornerRadius(21)
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Student 24:")
+                    Text("Student \(index + 1):")
                         .foregroundStyle(.white.opacity(0.64))
                     Text(student.name ?? "")
                         .foregroundStyle(.white)
@@ -31,7 +34,10 @@ struct StudentCellView: View {
                 })
                 
                 //MARK: Pay button
-                Button(action: {vm.payStudent(id: student.id)}, label: {
+                Button(action: {
+                    vm.payStudent(id: student.id)
+                    vm.addSalary()
+                }, label: {
                     Text("Pay")
                         .foregroundStyle(.black)
                         .font(.system(size: 16, weight: .bold))
