@@ -11,6 +11,7 @@ struct StatisticsView: View {
     
     @StateObject var studentVM = StudentViewModel()
     @StateObject var trainingVM = TrainingViewModel()
+    @State private var isPresentSettings = false
     
     var body: some View {
             ZStack {
@@ -26,10 +27,16 @@ struct StatisticsView: View {
                         
                         Spacer()
                         //MARK: Settings button
-                        Image(systemName: "gearshape")
-                            .resizable()
-                            .foregroundStyle(.white)
-                            .frame(width: 27, height: 27)
+                        Button {
+                            isPresentSettings.toggle()
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .resizable()
+                                .foregroundStyle(.white)
+                                .frame(width: 27, height: 27)
+                        }
+
+                        
                     }
                     
                     //MARK: - Main stack
@@ -55,7 +62,7 @@ struct StatisticsView: View {
                                               widht: 120)
                             ///Payd
                             StatisticCellView(title: "\(studentVM.Dateformatter(date: Date())) salary:",
-                                              count: Int(studentVM.getSalaryMouth()),
+                                              count: Int(studentVM.getSalaryMouthNow()),
                                               widht: 202)
                         }
                         
@@ -64,7 +71,14 @@ struct StatisticsView: View {
                     }
                     
                     Spacer()
-                    
+                    ScrollView {
+                        ForEach(studentVM.mouthSalary) { mouth in
+                            if mouth.count != 0{
+                                MouthCellView(mouth: mouth)
+                            }
+                        }
+                        .padding(.vertical)
+                    }
                     Button {
                         trainingVM.isPresentTrainings.toggle()
                     } label: {
@@ -73,6 +87,9 @@ struct StatisticsView: View {
 
                     
                 }
+                .fullScreenCover(isPresented: $isPresentSettings, content: {
+                    SettingView()
+                })
                 .fullScreenCover(isPresented: $trainingVM.isPresentTrainings, content: {
                     TrainingsView(vm: trainingVM)
                 })
@@ -80,6 +97,7 @@ struct StatisticsView: View {
                     StudentsView(vm: studentVM)
                 })
                 .padding()
+                
         }
     }
 }

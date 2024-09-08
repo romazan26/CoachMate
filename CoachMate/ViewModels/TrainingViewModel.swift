@@ -14,11 +14,15 @@ final class TrainingViewModel: ObservableObject{
     
     @Published var trainings: [Training] = []
     @Published var simpleTraining: Training!
+    @Published var simpleIndex = 0
     
     @Published var simpletextTraining = ""
     
     @Published var isPresentAddTraining = false
     @Published var isPresentTrainings = false
+    @Published var isPresentTraining = false
+    
+    @Published var isEdit = false
     
     init(){
         getTrainings()
@@ -36,7 +40,7 @@ final class TrainingViewModel: ObservableObject{
             print("Feth training error: \(error.localizedDescription)")
         }
         save()
-        isPresentAddTraining = false
+        isEdit = false
         simpletextTraining = ""
     }
     
@@ -47,7 +51,6 @@ final class TrainingViewModel: ObservableObject{
         newTraining.text = simpletextTraining
         save()
         simpletextTraining = ""
-        isPresentAddTraining = false
     }
     
     //MARK: - Get data

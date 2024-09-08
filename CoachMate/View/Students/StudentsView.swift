@@ -50,7 +50,7 @@ struct StudentsView: View {
                 //MARK: - Main stack
                 VStack{
                     ScrollView {
-                        ForEach(vm.students.indices) { i in
+                        ForEach(vm.students.indices, id: \.self) { i in
                             StudentCellView(student: vm.students[i], vm: vm, index: i)
                         }
                     }
@@ -64,6 +64,7 @@ struct StudentsView: View {
                 AddStudentView(vm: vm)
             }
         }
+        .animation(.easeInOut, value: vm.students)
         .animation(.easeInOut, value: vm.isPresentAddStudents)
     }
 }

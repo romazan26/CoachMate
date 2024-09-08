@@ -18,7 +18,10 @@ struct AddTrainingView: View {
                 //MARK: - Top tool bar
                 HStack {
                     /// back buutton
-                    Button(action: {dismiss()}, label: {
+                    Button(action: {
+                        dismiss()
+                        vm.simpletextTraining = ""
+                    }, label: {
                         Image(systemName: "chevron.left")
                             .resizable()
                             .foregroundStyle(.white)
@@ -27,22 +30,14 @@ struct AddTrainingView: View {
                     Spacer()
                     
                     /// Title view
-                    Text("Training 27")
+                    Text("New Training")
                         .foregroundStyle(.white)
                         .font(.system(size: 32, weight: .heavy))
-                        .padding(.leading, 25)
+                        //.padding(.leading, 25)
                     
                     Spacer()
                     
-                    /// Edit Training button
-                    Button {
-                       // vm.isPresentAddTraining.toggle()
-                    } label: {
-                        Image(systemName: "pencil")
-                            .resizable()
-                            .foregroundStyle(.white)
-                            .frame(width: 25, height: 25)
-                    }
+                    
                     
                     
                 }
@@ -71,10 +66,12 @@ struct AddTrainingView: View {
                 //MARK: - Add button
                 Button {
                     vm.addTraining()
+                    dismiss()
                 } label: {
                     CustonButtonView(text: "Save")
                 }
             }.padding()
+                .navigationBarBackButtonHidden()
         }
     }
 }

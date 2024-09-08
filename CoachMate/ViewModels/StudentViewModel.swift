@@ -13,6 +13,7 @@ final class StudentViewModel:ObservableObject{
     
     @Published var students: [Student] = []
     @Published var salarys: [Salary] = []
+    @Published var mouthSalary: [MouthSalary] = []
     
     @Published var simpleName = ""
     
@@ -22,6 +23,23 @@ final class StudentViewModel:ObservableObject{
     init(){
         getStudents()
         getSalary()
+        getMouthSalary()
+        if mouthSalary.isEmpty {
+            addMouth(mouth: "January")
+            addMouth(mouth: "February")
+            addMouth(mouth: "March")
+            addMouth(mouth: "April")
+            addMouth(mouth: "May")
+            addMouth(mouth: "June")
+            addMouth(mouth: "July")
+            addMouth(mouth: "August")
+            addMouth(mouth: "September")
+            addMouth(mouth: "October")
+            addMouth(mouth: "November")
+            addMouth(mouth: "December")
+            getSalaryMouthAll()
+        }
+        
     }
     
     //MARK: Sorted student
@@ -52,7 +70,7 @@ final class StudentViewModel:ObservableObject{
             }
     
     //MARK: - Sortes Salary
-    func getSalaryMouth() -> Int16{
+    func getSalaryMouthNow() -> Int16{
         
         let nowMouth = Dateformatter(date: Date())
         var totalSalary:Int16 = 0
@@ -66,6 +84,19 @@ final class StudentViewModel:ObservableObject{
         return totalSalary
     }
     
+    func getSalaryMouthAll(){
+        
+        for salary in salarys {
+            for mouth in mouthSalary {
+                if Dateformatter(date: salary.date ?? Date()) == mouth.mouth{
+                    editMouthSalary(mouth: mouth.mouth ?? "")
+                }
+            }
+            
+        }
+        print(mouthSalary)
+
+    }
     //MARK: - Edit data
     func payStudent(id: ObjectIdentifier){
         let request = NSFetchRequest<Student>(entityName: "Student")
@@ -73,10 +104,29 @@ final class StudentViewModel:ObservableObject{
             students = try manager.context.fetch(request)
             let student = students.first(where: {$0.id == id})
             student?.pay = true
+            editMouthSalary(mouth: Dateformatter(date: Date()))
         }catch let error{
             print("Error fetch Coredata: \(error.localizedDescription)")
         }
         save()
+        for mouth in mouthSalary {
+            if mouth.count != 0{
+                print(mouth)
+            }
+        }
+        
+    }
+    func editMouthSalary(mouth: String){
+        let request = NSFetchRequest<MouthSalary>(entityName: "MouthSalary")
+        do {
+            mouthSalary = try manager.context.fetch(request)
+            let mouthEdit = mouthSalary.first(where: {$0.mouth == mouth})
+            mouthEdit?.count += 1
+            mouthEdit?.salary += 500
+        }catch let error{
+            print("Error fetch Coredata: \(error.localizedDescription)")
+        }
+        saveMouth()
     }
     
     //MARK: - Delete data
@@ -100,11 +150,26 @@ final class StudentViewModel:ObservableObject{
         saveSalary()
     }
     
+    func addMouth(mouth: String){
+        let newMouth = MouthSalary(context: manager.context)
+        newMouth.mouth = mouth
+        save()
+    }
+    
     //MARK: - Get Data
     private func getStudents(){
         let request = NSFetchRequest<Student>(entityName: "Student")
         do {
             students = try manager.context.fetch(request)
+        }catch let error{
+            print("Error fetch Coredata: \(error.localizedDescription)")
+        }
+    }
+    
+    private func getMouthSalary(){
+        let request = NSFetchRequest<MouthSalary>(entityName: "MouthSalary")
+        do {
+            mouthSalary = try manager.context.fetch(request)
         }catch let error{
             print("Error fetch Coredata: \(error.localizedDescription)")
         }
@@ -129,5 +194,11 @@ final class StudentViewModel:ObservableObject{
         salarys.removeAll()
         manager.save()
         getSalary()
+    }
+    
+    private func saveMouth(){
+        mouthSalary.removeAll()
+        manager.save()
+        getMouthSalary()
     }
 }
