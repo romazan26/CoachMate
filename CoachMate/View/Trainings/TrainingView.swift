@@ -10,7 +10,7 @@ import SwiftUI
 struct TrainingView: View {
     @StateObject var vm: TrainingViewModel
     @Environment(\.dismiss) var dismiss
-    
+    @FocusState private var keyboardIsFocused: Bool
     var body: some View {
         ZStack {
             Color.main.ignoresSafeArea()
@@ -28,13 +28,13 @@ struct TrainingView: View {
                     Spacer()
                     
                     /// Title view
-                    Text("Training \(vm.simpleIndex)")
+                    Text("Training \(vm.simpleIndex + 1)")
                         .foregroundStyle(.white)
                         .font(.system(size: 32, weight: .heavy))
                         .padding(.leading, 25)
                     
                     Spacer()
-                                      
+                    
                     
                 }
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
@@ -51,23 +51,21 @@ struct TrainingView: View {
                         if vm.isEdit {
                             MultiLineTF(txt: $vm.simpletextTraining,
                                         placehold: vm.simpleTraining.text ?? "Text training")
-                                .offset(y: -20)
+                            .focused($keyboardIsFocused)
+                            .offset(y: -20)
                         }else{
                             Text("\(vm.simpleTraining.text ?? "")")
                                 .foregroundStyle(.white)
                         }
-                            
-                          Spacer()
-                            
+                        
+                        Spacer()
+                        
                     }
                     .padding()
                     
                     
                 }
                 .frame(width: 331, height: 390)
-                
-                
-                
                 Spacer()
                 
                 //MARK: - Add button
@@ -82,6 +80,9 @@ struct TrainingView: View {
                     CustonButtonView(text: vm.isEdit ? "Save" : "Edit")
                 }
             }.padding()
+        }
+        .onTapGesture {
+            keyboardIsFocused = false
         }
     }
 }

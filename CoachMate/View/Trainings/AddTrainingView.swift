@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTrainingView: View {
     @StateObject var vm: TrainingViewModel
     @Environment(\.dismiss) var dismiss
+    @FocusState private var keyboardIsFocused: Bool
     var body: some View {
         ZStack {
             Color.main.ignoresSafeArea()
@@ -51,6 +52,7 @@ struct AddTrainingView: View {
                     
                     //MARK: - Text training
                     MultiLineTF(txt: $vm.simpletextTraining, placehold: "Text training")
+                        .focused($keyboardIsFocused)
                         .frame(width: 331, height: 390)
                         .offset(y: -30)
                         .padding()
@@ -72,6 +74,9 @@ struct AddTrainingView: View {
                 }
             }.padding()
                 .navigationBarBackButtonHidden()
+        }
+        .onTapGesture {
+            keyboardIsFocused = false
         }
     }
 }
